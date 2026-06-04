@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Zonneschijn · Vakantievilla met privé studio</title>
+<meta name="description" content="Een vrijstaande vakantievilla met aparte studio. Privacy, ruimte en comfort voor gezinnen en groepen. Bekijk de villa, voorzieningen en beschikbaarheid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f0e9;
+    --bg-2:#ece6db;
+    --paper:#fbf9f5;
+    --ink:#22201c;
+    --ink-soft:#4a463f;
+    --muted:#857f73;
+    --line:#ddd5c7;
+    --gold:#9c7c4f;
+    --gold-deep:#7e6038;
+    --dark:#1c1a16;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --max:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  section{padding:120px 0;position:relative}
+  .serif{font-family:var(--serif)}
+  .eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500;display:inline-block;margin-bottom:22px}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.08;letter-spacing:-.01em}
+  h3{font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:-.01em}
+  p.body{color:var(--ink-soft);font-size:1.05rem;font-weight:300;max-width:54ch}
+  .gold-rule{width:54px;height:1px;background:var(--gold);margin:26px 0}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}
+
+  /* Nav */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .5s var(--ease),box-shadow .5s var(--ease),padding .4s var(--ease);padding:8px 0}
+  header.solid{background:rgba(251,249,245,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--serif);font-size:1.55rem;font-weight:600;letter-spacing:.01em;color:#fff;transition:color .5s var(--ease)}
+  header.solid .brand{color:var(--ink)}
+  .brand i{font-style:normal;color:var(--gold)}
+  .menu{display:flex;gap:38px;align-items:center}
+  .menu a{font-size:.82rem;letter-spacing:.06em;color:rgba(255,255,255,.85);transition:color .3s;position:relative;font-weight:400}
+  header.solid .menu a{color:var(--ink-soft)}
+  .menu a:not(.cta)::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:currentColor;transition:width .35s var(--ease)}
+  .menu a:not(.cta):hover::after{width:100%}
+  .cta{border:1px solid rgba(255,255,255,.55);padding:11px 24px;border-radius:2px;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;transition:all .35s var(--ease)}
+  .cta:hover{background:#fff;color:var(--ink);border-color:#fff}
+  header.solid .cta{border-color:var(--gold);color:var(--gold)}
+  header.solid .cta:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+  .burger span{width:26px;height:2px;background:#fff;transition:.3s;display:block}
+  header.solid .burger span{background:var(--ink)}
+
+  /* Hero */
+  .hero{height:100vh;min-height:660px;display:flex;align-items:center;position:relative;color:#fff;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80') center/cover;transform:scale(1.08);animation:slowzoom 18s ease-out forwards}
+  @keyframes slowzoom{to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,13,.45) 0%,rgba(20,17,13,.25) 40%,rgba(20,17,13,.6) 100%)}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero .eyebrow{color:#e8d4b8}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(3rem,7vw,5.4rem);line-height:1.02;letter-spacing:-.015em;max-width:16ch;margin-bottom:26px}
+  .hero p{font-weight:300;font-size:1.15rem;max-width:46ch;opacity:.92;margin-bottom:38px}
+  .hero-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#fff;padding:16px 34px;border-radius:2px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:all .4s var(--ease)}
+  .btn:hover{background:var(--gold-deep);transform:translateY(-2px)}
+  .btn-line{background:transparent;border:1px solid rgba(255,255,255,.6);color:#fff}
+  .btn-line:hover{background:#fff;color:var(--ink);border-color:#fff}
+  .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.8);display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scroll-cue .ln{width:1px;height:46px;background:rgba(255,255,255,.5);position:relative;overflow:hidden}
+  .scroll-cue .ln::after{content:"";position:absolute;top:-46px;left:0;width:100%;height:46px;background:#fff;animation:cue 2.2s var(--ease) infinite}
+  @keyframes cue{to{top:46px}}
+
+  /* Stat bar */
+  .stats{background:var(--dark);color:#e9e2d6}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .stat{padding:46px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+  .stat:last-child{border-right:none}
+  .stat b{font-family:var(--serif);font-size:2.8rem;font-weight:500;color:#fff;display:block;line-height:1}
+  .stat span{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:12px;display:block}
+
+  /* Intro / split */
+  .split{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+  .split.rev{grid-template-columns:1.05fr 1fr}
+  .fig{position:relative}
+  .fig img{border-radius:2px;width:100%;height:560px;object-fit:cover}
+  .fig .tag{position:absolute;background:var(--paper);padding:20px 26px;border-radius:2px;box-shadow:0 24px 60px rgba(40,34,24,.16);font-family:var(--serif)}
+  .fig .tag b{font-size:2rem;font-weight:600;color:var(--gold);display:block;line-height:1}
+  .fig .tag span{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-family:var(--sans)}
+  .fig .tag.br{right:-26px;bottom:42px}
+  .fig .tag.bl{left:-26px;bottom:42px}
+
+  /* Fullbleed */
+  .fullbleed{padding:0}
+  .fullbleed .panel{min-height:78vh;display:flex;align-items:center;color:#fff;position:relative;background-attachment:fixed;background-size:cover;background-position:center}
+  .fullbleed .panel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,13,.72) 0%,rgba(20,17,13,.25) 70%)}
+  .studio-bg{background-image:url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=2000&q=80')}
+  .fullbleed .inner{position:relative;z-index:2;max-width:540px}
+  .fullbleed h2{color:#fff}
+  .fullbleed p.body{color:rgba(255,255,255,.85)}
+
+  /* Amenities */
+  .amen-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:56px}
+  .amen{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .amen .cell{background:var(--paper);padding:42px 34px;transition:background .4s var(--ease)}
+  .amen .cell:hover{background:#fff}
+  .amen .num{font-family:var(--serif);font-size:1rem;color:var(--gold);letter-spacing:.1em}
+  .amen .cell h3{margin:18px 0 8px;font-size:1.3rem}
+  .amen .cell p{font-size:.92rem;color:var(--muted);font-weight:300}
+
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:200px;gap:14px;margin-top:54px}
+  .gallery figure{overflow:hidden;border-radius:2px;cursor:pointer;position:relative}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+  .gallery figure::after{content:"⤢";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;background:rgba(20,17,13,.28);opacity:0;transition:opacity .4s}
+  .gallery figure:hover img{transform:scale(1.07)}
+  .gallery figure:hover::after{opacity:1}
+  .g-a{grid-column:span 3;grid-row:span 2}
+  .g-b{grid-column:span 3}
+  .g-c{grid-column:span 2}
+  .g-d{grid-column:span 2}
+  .g-e{grid-column:span 2}
+
+  /* Pricing */
+  .pricing{background:var(--bg-2)}
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:54px}
+  .plan{background:var(--paper);border:1px solid var(--line);padding:48px;border-radius:2px;position:relative;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .plan:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(40,34,24,.12)}
+  .plan.feat{background:var(--dark);color:#e9e2d6;border-color:var(--dark)}
+  .plan .ribbon{position:absolute;top:28px;right:28px;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:5px 12px;border-radius:2px}
+  .plan h3{font-size:1.7rem}
+  .plan.feat h3{color:#fff}
+  .plan .price{font-family:var(--serif);font-size:3.4rem;font-weight:500;margin:16px 0 4px;line-height:1}
+  .plan.feat .price{color:#fff}
+  .plan .price small{font-size:1rem;font-family:var(--sans);color:var(--muted);font-weight:400}
+  .plan .desc{font-size:.95rem;color:var(--muted);font-weight:300;margin-bottom:26px}
+  .plan ul{list-style:none}
+  .plan li{padding:13px 0;border-top:1px solid var(--line);font-size:.94rem;font-weight:300;display:flex;gap:12px;align-items:flex-start}
+  .plan.feat li{border-color:rgba(255,255,255,.12)}
+  .plan li svg{flex:none;margin-top:5px;stroke:var(--gold)}
+  .plan .btn{margin-top:32px;width:100%;justify-content:center}
+
+  /* Testimonial */
+  .quote{text-align:center;max-width:880px;margin:0 auto}
+  .quote .stars{color:var(--gold);letter-spacing:.3em;margin-bottom:28px}
+  .quote blockquote{font-family:var(--serif);font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:400;line-height:1.32;font-style:italic;color:var(--ink)}
+  .quote cite{display:block;margin-top:30px;font-style:normal;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+  /* Contact */
+  .contact{background:var(--dark);color:#e9e2d6}
+  .contact h2{color:#fff}
+  .contact .eyebrow{color:var(--gold)}
+  .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+  .contact p.body{color:rgba(233,226,214,.8)}
+  form{display:grid;gap:20px;margin-top:8px}
+  .field{position:relative}
+  .field label{position:absolute;left:0;top:14px;font-size:.95rem;color:rgba(233,226,214,.5);pointer-events:none;transition:all .3s var(--ease)}
+  .field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(233,226,214,.22);color:#fff;font:inherit;padding:14px 0;font-weight:300}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+  .field input:focus+label,.field textarea:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:not(:placeholder-shown)+label{top:-12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .field input::placeholder,.field textarea::placeholder{color:transparent}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .formmsg{display:none;font-size:.9rem;color:var(--gold);font-weight:300}
+  .info-block{margin-bottom:30px}
+  .info-block .k{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .info-block .v{font-family:var(--serif);font-size:1.4rem;color:#fff}
+  .map{margin-top:34px;border-radius:2px;overflow:hidden;border:1px solid rgba(233,226,214,.14)}
+  .map iframe{width:100%;height:220px;border:0;display:block;filter:grayscale(.4) contrast(1.05)}
+
+  footer{background:#15130f;color:#8c867a;padding:54px 0;text-align:center}
+  footer .brand{color:#fff;margin-bottom:14px;display:inline-block}
+  footer .fmenu{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:18px 0 26px;font-size:.82rem;letter-spacing:.04em}
+  footer .fmenu a:hover{color:var(--gold)}
+  footer small{font-size:.76rem;letter-spacing:.04em;opacity:.7}
+
+  /* Lightbox */
+  .lb{position:fixed;inset:0;background:rgba(15,13,10,.94);z-index:200;display:none;align-items:center;justify-content:center;padding:40px}
+  .lb.open{display:flex}
+  .lb img{max-width:90vw;max-height:86vh;border-radius:2px;box-shadow:0 40px 100px rgba(0,0,0,.5)}
+  .lb .close{position:absolute;top:26px;right:34px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.8}
+  .lb .close:hover{opacity:1}
+  .lb .arr{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.4rem;cursor:pointer;opacity:.7;padding:20px;user-select:none}
+  .lb .arr:hover{opacity:1}
+  .lb .prev{left:14px}.lb .next{right:14px}
+
+  @media(max-width:980px){
+    .split,.split.rev,.c-grid{grid-template-columns:1fr;gap:48px}
+    .split.rev .fig{order:-1}
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+    .g-a,.g-b,.g-c,.g-d,.g-e{grid-column:span 1;grid-row:span 1}
+    .g-a{grid-column:span 2}
+    .stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:none}
+    .stat{border-bottom:1px solid rgba(255,255,255,.08)}
+    .amen{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:720px){
+    section{padding:84px 0}
+    .wrap{padding:0 22px}
+    .menu{position:fixed;inset:0 0 0 auto;width:78%;max-width:340px;background:var(--paper);flex-direction:column;justify-content:center;align-items:flex-start;padding:50px 40px;gap:30px;transform:translateX(100%);transition:transform .5s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.2)}
+    .menu.open{transform:none}
+    .menu a{color:var(--ink-soft)!important;font-size:1.05rem}
+    .menu .cta{border-color:var(--gold);color:var(--gold)}
+    .burger{display:flex;z-index:101}
+    .burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg);background:var(--ink)}
+    .burger.x span:nth-child(2){opacity:0}
+    .burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:var(--ink)}
+    .fig img{height:420px}
+    .fig .tag.br,.fig .tag.bl{right:18px;left:auto;bottom:18px}
+    .fullbleed .panel{background-attachment:scroll}
+    .price-grid,.two{grid-template-columns:1fr}
+    .amen{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="brand">Villa <i>Zonneschijn</i></a>
+    <nav class="menu" id="menu">
+      <a href="#villa">De villa</a>
+      <a href="#studio">De studio</a>
+      <a href="#voorzieningen">Voorzieningen</a>
+      <a href="#fotos">Galerij</a>
+      <a href="#prijzen">Tarieven</a>
+      <a href="#contact" class="cta">Reserveren</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow">Vakantievilla &nbsp;·&nbsp; Privé studio</span>
+    <h1 class="serif">Ruimte om<br>te ademen.</h1>
+    <p>Een vrijstaande villa met aparte studio, omringd door rust en groen. Voor wie op vakantie écht thuis wil komen.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn">Beschikbaarheid checken</a>
+      <a href="#fotos" class="btn btn-line">Bekijk de galerij</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="ln"></span></div>
+</section>
+
+<section class="stats" style="padding:0">
+  <div class="wrap">
+    <div class="stat reveal"><b>8<span style="font-size:1.4rem">+2</span></b><span>Slaapplaatsen</span></div>
+    <div class="stat reveal d1"><b>4</b><span>Slaapkamers</span></div>
+    <div class="stat reveal d2"><b>1200<span style="font-size:1.4rem">m²</span></b><span>Eigen tuin</span></div>
+    <div class="stat reveal d3"><b>2</b><span>Privé verblijven</span></div>
+  </div>
+</section>
+
+<section id="villa">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">De villa</span>
+      <h2 class="serif">Een huis dat<br>al een thuis is.</h2>
+      <div class="gold-rule"></div>
+      <p class="body">Vier ruime slaapkamers, twee badkamers en een open woonkeuken die naadloos overgaat in een groot terras. De villa biedt comfortabel plaats aan acht gasten.</p>
+      <p class="body" style="margin-top:18px">Binnen tref je natuurlijke materialen, een houtkachel voor de koelere avonden en grote ramen die de tuin naar binnen halen. Alles is er, niets is te veel.</p>
+    </div>
+    <div class="fig reveal d1">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=80" alt="Woonruimte van de villa">
+      <div class="tag br"><b>120m²</b><span>Woonoppervlak</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="fullbleed" id="studio">
+  <div class="panel studio-bg">
+    <div class="wrap">
+      <div class="inner reveal">
+        <span class="eyebrow">De aparte studio</span>
+        <h2 class="serif">Eigen ingang,<br>eigen rust.</h2>
+        <div class="gold-rule"></div>
+        <p class="body">Naast de villa ligt een volledig zelfstandige studio met eigen entree, slaaphoek, kitchenette en badkamer. Ideaal voor een extra stel, grootouders of wie graag wat afstand houdt.</p>
+        <p class="body" style="margin-top:18px">Te boeken samen met de villa of, in overleg, los.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="voorzieningen">
+  <div class="wrap">
+    <div class="amen-head">
+      <div class="reveal">
+        <span class="eyebrow">Voorzieningen</span>
+        <h2 class="serif">Tot in het detail<br>verzorgd.</h2>
+      </div>
+      <p class="body reveal d1" style="margin-bottom:6px">Alles wat een verblijf moeiteloos maakt, is er al. Je hoeft alleen je koffer uit te pakken.</p>
+    </div>
+    <div class="amen">
+      <div class="cell reveal"><span class="num">01</span><h3 class="serif">Twee badkamers</h3><p>Regendouche, vloerverwarming en zachte handdoeken.</p></div>
+      <div class="cell reveal d1"><span class="num">02</span><h3 class="serif">Volledige keuken</h3><p>Vaatwasser, oven, koffiemachine en alles voor het koken.</p></div>
+      <div class="cell reveal d2"><span class="num">03</span><h3 class="serif">Snel wifi</h3><p>Stabiel internet in zowel de villa als de studio.</p></div>
+      <div class="cell reveal"><span class="num">04</span><h3 class="serif">Tuin & terras</h3><p>1200m² privé, met loungeset en buitendouche.</p></div>
+      <div class="cell reveal d1"><span class="num">05</span><h3 class="serif">Houtkachel</h3><p>Warmte en sfeer voor de koelere avonden.</p></div>
+      <div class="cell reveal d2"><span class="num">06</span><h3 class="serif">Privé parkeren</h3><p>Ruimte voor twee auto's op eigen terrein.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="fotos" class="pricing" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div style="text-align:center" class="reveal">
+      <span class="eyebrow">Galerij</span>
+      <h2 class="serif">Een eerste indruk</h2>
+    </div>
+    <div class="gallery reveal d1" id="gallery">
+      <figure class="g-a"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=80" alt="Interieur"></figure>
+      <figure class="g-b"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80" alt="Slaapkamer"></figure>
+      <figure class="g-c"><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=800&q=80" alt="Keuken"></figure>
+      <figure class="g-d"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Badkamer"></figure>
+      <figure class="g-e"><img src="https://images.unsplash.com/photo-1571508601891-ca5e7a713859?auto=format&fit=crop&w=800&q=80" alt="Tuin"></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap quote reveal">
+    <div class="stars">★★★★★</div>
+    <blockquote>"De mooiste plek waar we ooit verbleven. De studio gaf ons net dat beetje extra ruimte, en de tuin was elke ochtend opnieuw een verrassing."</blockquote>
+    <cite>Familie De Vries · verbleef 9 nachten</cite>
+  </div>
+</section>
+
+<section id="prijzen" class="pricing">
+  <div class="wrap">
+    <div style="text-align:center" class="reveal">
+      <span class="eyebrow">Tarieven</span>
+      <h2 class="serif">Heldere prijzen,<br>geen verrassingen.</h2>
+    </div>
+    <div class="price-grid">
+      <div class="plan reveal">
+        <h3 class="serif">De villa</h3>
+        <div class="price serif">€195<small> / nacht</small></div>
+        <p class="desc">Tot 8 gasten · 4 slaapkamers</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Water, gas en stroom inbegrepen</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Linnengoed en handdoeken</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Minimaal 3 nachten</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Eindschoonmaak € 75</li>
+        </ul>
+        <a href="#contact" class="btn btn-line" style="border-color:var(--gold);color:var(--gold)">Reserveren</a>
+      </div>
+      <div class="plan feat reveal d1">
+        <span class="ribbon">Meest geboekt</span>
+        <h3 class="serif">Villa + studio</h3>
+        <div class="price serif">€245<small> / nacht</small></div>
+        <p class="desc" style="color:rgba(233,226,214,.6)">Tot 10 gasten · het hele terrein</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Volledig privé, het hele perceel</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Alle voorzieningen inbegrepen</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Korting vanaf 7 nachten</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Huisdieren in overleg welkom</li>
+        </ul>
+        <a href="#contact" class="btn">Reserveren</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap c-grid">
+    <div class="reveal">
+      <span class="eyebrow">Reserveren</span>
+      <h2 class="serif">Vraag je verblijf aan</h2>
+      <div class="gold-rule"></div>
+      <p class="body">Laat je gegevens en gewenste data achter. Je ontvangt binnen 24 uur een persoonlijke reactie met de beschikbaarheid.</p>
+      <form id="form" onsubmit="return submitForm(event)">
+        <div class="two">
+          <div class="field"><input id="naam" placeholder=" " required><label for="naam">Naam</label></div>
+          <div class="field"><input id="email" type="email" placeholder=" " required><label for="email">E-mail</label></div>
+        </div>
+        <div class="two">
+          <div class="field"><input id="aankomst" type="date" placeholder=" "><label for="aankomst" style="top:-12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)">Aankomst</label></div>
+          <div class="field"><input id="vertrek" type="date" placeholder=" "><label for="vertrek" style="top:-12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)">Vertrek</label></div>
+        </div>
+        <div class="field"><textarea id="bericht" rows="3" placeholder=" "></textarea><label for="bericht">Bericht · aantal personen, wensen</label></div>
+        <button class="btn" type="submit">Verstuur aanvraag</button>
+        <p class="formmsg" id="formmsg">Bedankt voor je aanvraag. We nemen binnen 24 uur contact met je op.</p>
+      </form>
+    </div>
+    <div class="reveal d1">
+      <div class="info-block"><div class="k">Telefoon</div><div class="v">+31 6 12 34 56 78</div></div>
+      <div class="info-block"><div class="k">E-mail</div><div class="v">info@viela-vie.nl</div></div>
+      <div class="info-block"><div class="k">Adres</div><div class="v">Voorbeeldweg 1, Plaatsnaam</div></div>
+      <div class="map">
+        <iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=4.7,52.3,5.0,52.45&layer=mapnik" title="Locatie"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="brand serif">Villa <i style="color:var(--gold)">Zonneschijn</i></a>
+    <div class="fmenu">
+      <a href="#villa">De villa</a>
+      <a href="#studio">De studio</a>
+      <a href="#voorzieningen">Voorzieningen</a>
+      <a href="#prijzen">Tarieven</a>
+      <a href="#contact">Reserveren</a>
+    </div>
+    <small>© <span id="jaar"></span> Villa Zonneschijn · Vakantievilla met privé studio. Alle rechten voorbehouden.</small>
+  </div>
+</footer>
+
+<div class="lb" id="lb">
+  <span class="close" id="lbClose">×</span>
+  <span class="arr prev" id="lbPrev">‹</span>
+  <img id="lbImg" src="" alt="">
+  <span class="arr next" id="lbNext">›</span>
+</div>
+
+<script>
+  // Sticky nav
+  const hdr=document.getElementById('hdr');
+  const onScroll=()=>hdr.classList.toggle('solid',window.scrollY>60);
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  // Mobile menu
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>{menu.classList.toggle('open');burger.classList.toggle('x');});
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.classList.remove('x');}));
+
+  // Reveal on scroll
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Lightbox
+  const imgs=[...document.querySelectorAll('#gallery img')];
+  const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+  let idx=0;
+  const show=i=>{idx=(i+imgs.length)%imgs.length;lbImg.src=imgs[idx].src;};
+  imgs.forEach((im,i)=>im.addEventListener('click',()=>{show(i);lb.classList.add('open');}));
+  document.getElementById('lbClose').onclick=()=>lb.classList.remove('open');
+  document.getElementById('lbNext').onclick=()=>show(idx+1);
+  document.getElementById('lbPrev').onclick=()=>show(idx-1);
+  lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open');});
+  document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);});
+
+  document.getElementById('jaar').textContent=new Date().getFullYear();
+  function submitForm(e){e.preventDefault();document.getElementById('formmsg').style.display='block';document.getElementById('form').reset();return false;}
+</script>
+</body>
+</html>
