@@ -157,6 +157,16 @@
   .map{margin-top:34px;border-radius:2px;overflow:hidden;border:1px solid rgba(233,226,214,.14)}
   .map iframe{width:100%;height:220px;border:0;display:block;filter:grayscale(.4) contrast(1.05)}
 
+  .host{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+  .host .sig{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold);margin-top:26px}
+  .qcard{background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:42px 38px;box-shadow:0 24px 60px rgba(40,34,24,.07)}
+  .qcard h3{font-size:1.6rem;margin-bottom:6px}
+  .qcard p.sub{font-size:.92rem;color:var(--muted);font-weight:300;margin-bottom:14px}
+  .qcard .btn{width:100%;justify-content:center;margin-top:6px}
+  .lightform .field input,.lightform .field textarea{color:var(--ink);border-bottom:1px solid var(--line)}
+  .lightform .field label{color:var(--muted)}
+  .lightform .field input:focus,.lightform .field textarea:focus{border-color:var(--gold)}
+
   footer{background:#15130f;color:#8c867a;padding:54px 0;text-align:center}
   footer .brand{color:#fff;margin-bottom:14px;display:inline-block}
   footer .fmenu{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:18px 0 26px;font-size:.82rem;letter-spacing:.04em}
@@ -213,6 +223,7 @@
       <a href="#voorzieningen">Voorzieningen</a>
       <a href="#fotos">Galerij</a>
       <a href="#prijzen">Tarieven</a>
+      <a href="#overons">Over ons</a>
       <a href="#contact" class="cta">Reserveren</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -364,6 +375,31 @@
   </div>
 </section>
 
+<section id="overons">
+  <div class="wrap host">
+    <div class="reveal">
+      <span class="eyebrow">Over ons</span>
+      <h2 class="serif">Een stukje Madeira,<br>met liefde gedeeld.</h2>
+      <div class="gold-rule"></div>
+      <p class="body">Wij zijn Kitty en Marco. Jaren geleden verloren we ons hart aan Madeira — aan het eeuwige voorjaar, de bloemenpracht, het diepblauwe zeezicht en de heerlijke rust die het eiland geeft. Onze plek hier werd al snel een tweede thuis.</p>
+      <p class="body" style="margin-top:18px">Die plek delen we nu graag met andere liefhebbers. We hebben de villa en de studio met veel zorg en liefde ingericht, zodat jij je er vanaf de eerste minuut thuis voelt. Heb je een vraag over het huis, het eiland of de beschikbaarheid? Stel hem gerust — we denken met alle plezier met je mee.</p>
+      <p class="sig">— Kitty &amp; Marco</p>
+    </div>
+    <div class="qcard reveal d1">
+      <h3 class="serif">Stel je vraag</h3>
+      <p class="sub">We reageren meestal binnen een dag.</p>
+      <form id="qform" class="lightform">
+        <input type="hidden" name="_honey" style="display:none">
+        <div class="field"><input id="qnaam" name="Naam" placeholder=" " required><label for="qnaam">Naam</label></div>
+        <div class="field"><input id="qemail" name="email" type="email" placeholder=" " required><label for="qemail">E-mail</label></div>
+        <div class="field"><textarea id="qvraag" name="Vraag" rows="3" placeholder=" " required></textarea><label for="qvraag">Je vraag</label></div>
+        <button class="btn" type="submit">Verstuur vraag</button>
+        <p class="formmsg" id="qmsg"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="wrap c-grid">
     <div class="reveal">
@@ -371,18 +407,19 @@
       <h2 class="serif">Vraag je verblijf aan</h2>
       <div class="gold-rule"></div>
       <p class="body">Laat je gegevens en gewenste data achter. Je ontvangt binnen 24 uur een persoonlijke reactie met de beschikbaarheid.</p>
-      <form id="form" onsubmit="return submitForm(event)">
+      <form id="form">
+        <input type="hidden" name="_honey" style="display:none">
         <div class="two">
-          <div class="field"><input id="naam" placeholder=" " required><label for="naam">Naam</label></div>
-          <div class="field"><input id="email" type="email" placeholder=" " required><label for="email">E-mail</label></div>
+          <div class="field"><input id="naam" name="Naam" placeholder=" " required><label for="naam">Naam</label></div>
+          <div class="field"><input id="email" name="email" type="email" placeholder=" " required><label for="email">E-mail</label></div>
         </div>
         <div class="two">
-          <div class="field"><input id="aankomst" type="date" placeholder=" "><label for="aankomst" style="top:-12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)">Aankomst</label></div>
-          <div class="field"><input id="vertrek" type="date" placeholder=" "><label for="vertrek" style="top:-12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)">Vertrek</label></div>
+          <div class="field"><input id="aankomst" name="Aankomst" type="date" placeholder=" "><label for="aankomst" style="top:-12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)">Aankomst</label></div>
+          <div class="field"><input id="vertrek" name="Vertrek" type="date" placeholder=" "><label for="vertrek" style="top:-12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)">Vertrek</label></div>
         </div>
-        <div class="field"><textarea id="bericht" rows="3" placeholder=" "></textarea><label for="bericht">Bericht · aantal personen, wensen</label></div>
+        <div class="field"><textarea id="bericht" name="Bericht" rows="3" placeholder=" "></textarea><label for="bericht">Bericht · aantal personen, wensen</label></div>
         <button class="btn" type="submit">Verstuur aanvraag</button>
-        <p class="formmsg" id="formmsg">Bedankt voor je aanvraag. We nemen binnen 24 uur contact met je op.</p>
+        <p class="formmsg" id="formmsg"></p>
       </form>
     </div>
     <div class="reveal d1">
@@ -404,6 +441,7 @@
       <a href="#studio">De studio</a>
       <a href="#voorzieningen">Voorzieningen</a>
       <a href="#prijzen">Tarieven</a>
+      <a href="#overons">Over ons</a>
       <a href="#contact">Reserveren</a>
     </div>
     <small>© <span id="jaar"></span> Viela Vie · Vakantievilla met privé studio op Madeira. Alle rechten voorbehouden.</small>
@@ -441,7 +479,48 @@
   document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);});
 
   document.getElementById('jaar').textContent=new Date().getFullYear();
-  function submitForm(e){e.preventDefault();document.getElementById('formmsg').style.display='block';document.getElementById('form').reset();return false;}
+
+  // ── FormSubmit endpoint ──────────────────────────────────────────────
+  // Vul hieronder je GEHEIME FormSubmit-alias in om het e-mailadres te verbergen.
+  // Die alias krijg je NA de eerste activatie: log in op https://formsubmit.co
+  // (of bekijk je dashboard) → kopieer de random code → vervang de regel hieronder door:
+  //   const FORM_CODE = 'JOUW_ALIAS_CODE';
+  // Zolang je het e-mailadres gebruikt, werkt het ook — maar dan staat het zichtbaar in de code.
+  const FORM_CODE = 'marcoauto@hetnet.nl';
+  const ENDPOINT = 'https://formsubmit.co/ajax/' + FORM_CODE;
+
+  async function sendForm(form,msgEl,subject,autoresponse){
+    const btn=form.querySelector('button[type=submit]');
+    const orig=btn.textContent;
+    btn.disabled=true;btn.textContent='Versturen…';
+    const data=new FormData(form);
+    data.append('_subject',subject);
+    data.append('_captcha','false');
+    data.append('_template','table');
+    if(autoresponse)data.append('_autoresponse',autoresponse);
+    try{
+      const res=await fetch(ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:data});
+      if(!res.ok)throw new Error('bad response');
+      msgEl.textContent='Bedankt! Je bericht is verstuurd — je ontvangt een bevestiging per e-mail en we reageren binnen 24 uur.';
+      msgEl.style.color='var(--gold)';
+      msgEl.style.display='block';
+      form.reset();
+    }catch(err){
+      msgEl.textContent='Versturen lukte niet. Probeer het later nog eens of neem telefonisch contact op.';
+      msgEl.style.color='#d29393';
+      msgEl.style.display='block';
+    }finally{
+      btn.disabled=false;btn.textContent=orig;
+    }
+    return false;
+  }
+
+  const AR_BOEKING='Hartelijk dank voor je aanvraag bij Viela Vie! We hebben je reserveringsaanvraag goed ontvangen en reageren binnen 24 uur met de beschikbaarheid. Tot snel — hartelijke groet, Kitty & Marco';
+  const AR_VRAAG='Bedankt voor je bericht aan Viela Vie! We hebben je vraag ontvangen en reageren meestal binnen een dag. Hartelijke groet, Kitty & Marco';
+
+  document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();sendForm(e.target,document.getElementById('formmsg'),'Nieuwe reserveringsaanvraag · viela-vie.nl',AR_BOEKING);});
+  const qf=document.getElementById('qform');
+  if(qf)qf.addEventListener('submit',e=>{e.preventDefault();sendForm(e.target,document.getElementById('qmsg'),'Nieuwe vraag · viela-vie.nl',AR_VRAAG);});
 </script>
 </body>
 </html>
